@@ -1,0 +1,330 @@
+mysql> SELECT * FROM TYPES;
++----+----------+
+| id | name     |
++----+----------+
+|  1 | Normal   |
+|  2 | Water    |
+|  3 | Grass    |
+|  4 | Rock     |
+|  5 | Fire     |
+|  6 | Ground   |
+|  7 | Poison   |
+|  8 | Bug      |
+|  9 | Electric |
+| 10 | Dragon   |
+| 11 | Steel    |
+| 12 | Dark     |
+| 13 | Fighting |
+| 14 | Psychic  |
+| 15 | Ghost    |
+| 16 | Fairy    |
+| 17 | Ice      |
+| 18 | Flying   |
++----+----------+
+
+2.
+mysql> SELECT * FROM pokemons WHERE ID = 45;
++----+-------+--------------+----------------+
+| id | name  | primary_type | secondary_type |
++----+-------+--------------+----------------+
+| 45 | Eevee |            1 |           NULL |
++----+-------+--------------+----------------+
+
+3.
+mysql> SELECT COUNT(*) FROM pokemons;
++----------+
+| COUNT(*) |
++----------+
+|      656 |
++----------+
+
+4.
+mysql> SELECT COUNT(*) FROM types;
++----------+
+| COUNT(*) |
++----------+
+|       18 |
++----------+
+
+5.
+mysql> SELECT COUNT(*) FROM pokemons WHERE secondary_type IS NOT NULL;
++----------+
+| COUNT(*) |
++----------+
+|      316 |
+
+6.
+mysql> SELECT pokemons.name, types.name FROM pokemons JOIN types ON pokemons.primary_type = types.id;
+//too long
+
+7.
+mysql> SELECT pokemons.name, types.name FROM pokemons JOIN types ON pokemons.secondary_type = types.id WHERE pokemons.name = "Rufflet";
++---------+--------+
+| name    | name   |
++---------+--------+
+| Rufflet | Flying |
++---------+--------+
+
+8.
+mysql> select pokemons.name FROM pokemons JOIN pokemon_trainer ON pokemon_trainer.pokemon_id = pokemons.id WHERE pokemon_trainer.trainerID = 303;
++-----------+
+| name      |
++-----------+
+| Wailord   |
+| Vileplume |
++-----------+
+
+9.
+mysql> SELECT COUNT(*), types.name FROM pokemons JOIN types ON types.id = pokemons.secondary_type WHERE types.name = "POISON";
++----------+--------+
+| COUNT(*) | name   |
++----------+--------+
+|       31 | Poison |
++----------+--------+
+
+10.
+mysql> SELECT COUNT(*), types.name FROM pokemons JOIN types ON types.id = pokemons.primary_type GROUP by types.name;
++----------+----------+
+| COUNT(*) | name     |
++----------+----------+
+|       90 | Normal   |
+|       95 | Water    |
+|       59 | Grass    |
+|       38 | Rock     |
+|       38 | Fire     |
+|       29 | Ground   |
+|       27 | Poison   |
+|       61 | Bug      |
+|       35 | Electric |
+|       22 | Dragon   |
+|       19 | Steel    |
+|       24 | Dark     |
+|       25 | Fighting |
+|       38 | Psychic  |
+|       19 | Ghost    |
+|       14 | Fairy    |
+|       22 | Ice      |
+|        1 | Flying   |
++----------+----------+
+
+
+ysql> SELECT COUNT(*) FROM pokemon_trainer WHERE pokemon_trainer.pokelevel >= 100 GROUP BY pokemon_trainer.trainerID HAVING COUNT(*) >= 1;
++----------+
+| COUNT(*) |
++----------+
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        5 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        1 |
+|        2 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        5 |
+|        5 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        5 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        2 |
+|        2 |
+|        1 |
+|        6 |
+|        6 |
+|        2 |
+|        1 |
+|        1 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        5 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        1 |
+|        2 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        5 |
+|        5 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        5 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        2 |
+|        2 |
+|        1 |
+|        6 |
+|        6 |
+|        2 |
+|        1 |
+|        1 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        1 |
+|        1 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        2 |
+|        5 |
+|        5 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        2 |
+|        1 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        5 |
+|        6 |
+|        6 |
+|        6 |
+|        2 |
+|        1 |
+|        2 |
+|        1 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        2 |
+|        1 |
+|        2 |
+|        2 |
+|        5 |
+|        6 |
+|        2 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        6 |
+|        2 |
+|        1 |
+|        6 |
+|        6 |
+|        1 |
+|        2 |
+|        6 |
+|        2 |
+|        2 |
+|        2 |
++----------+
+
+12.
+mysql> SELECT pokemons.name, COUNT(pokemon_trainer.trainerID) from pokemon_trainer JOIN pokemons ON pokemons.id=pokemon_trainer.pokemon_ID GROUP BY pokemons.name HAVING COUNT(pokemon_trainer.trainerID) = 1;
++------------+----------------------------------+
+| name       | COUNT(pokemon_trainer.trainerID) |
++------------+----------------------------------+
+| Clawitzer  |                                1 |
+| Barbaracle |                                1 |
+| Tynamo     |                                1 |
+| Rufflet    |                                1 |
+| Lugia      |                                1 |
+| Binacle    |                                1 |
+| Malamar    |                                1 |
+| Zekrom     |                                1 |
+| Reshiram   |                                1 |
+| Happiny    |                                1 |
+| Zweilous   |                                1 |
+| Swirlix    |                                1 |
+| Spewpa     |                                1 |
++------------+----------------------------------+
+
