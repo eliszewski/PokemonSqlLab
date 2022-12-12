@@ -328,3 +328,14 @@ mysql> SELECT pokemons.name, COUNT(pokemon_trainer.trainerID) from pokemon_train
 | Spewpa     |                                1 |
 +------------+----------------------------------+
 
+13.
+SELECT p.name 'Pokemons name', tr.trainername 'Trainer name', pt.pokelevel 'Level', t.name 'Primary type', ts.name 'Secondary type'
+FROM pokemon_trainer pt
+JOIN pokemons p ON pt.pokemon_id=p.id
+JOIN trainers tr ON pt.trainerID=tr.trainerID
+JOIN types t ON t.id=p.primary_type
+JOIN types ts ON ts.id=p.secondary_type
+ORDER BY pt.stats_total DESC;
+
+/* I create a new Column in pokemon_trainer called stats_total which all stats added together this determines a pokemons
+overall power to a certain extent */
