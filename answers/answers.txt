@@ -337,5 +337,5 @@ JOIN types t ON t.id=p.primary_type
 JOIN types ts ON ts.id=p.secondary_type
 ORDER BY pt.stats_total DESC;
 
-/* I create a new Column in pokemon_trainer called stats_total which all stats added together this determines a pokemons
+/* I created a new Column in pokemon_trainer called stats_total which is all stats added together this determines a pokemons
 overall power to a certain extent */
