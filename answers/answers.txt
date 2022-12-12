@@ -329,7 +329,7 @@ mysql> SELECT pokemons.name, COUNT(pokemon_trainer.trainerID) from pokemon_train
 +------------+----------------------------------+
 
 13.
-SELECT p.name 'Pokemons name', tr.trainername 'Trainer name', pt.pokelevel 'Level', t.name 'Primary type', ts.name 'Secondary type'
+SELECT p.name 'Pokemons name', tr.trainername 'Trainer name', pt.pokelevel 'Level', t.name 'Primary type', ts.name 'Secondary type', pt.stats_total 'TOTAL STATS'
 FROM pokemon_trainer pt
 JOIN pokemons p ON pt.pokemon_id=p.id
 JOIN trainers tr ON pt.trainerID=tr.trainerID
